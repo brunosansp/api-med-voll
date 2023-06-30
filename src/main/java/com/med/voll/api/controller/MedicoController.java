@@ -5,7 +5,8 @@ import com.med.voll.api.medico.Medico;
 import com.med.voll.api.medico.MedicoRecord;
 import com.med.voll.api.medico.MedicoResponseRecord;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,8 +32,8 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<MedicoResponseRecord> listAll() {
-        return medicoRepository.findAll().stream().map(MedicoResponseRecord::new).toList();
+    public Page<MedicoResponseRecord> listAll(Pageable pageable) {
+        return medicoRepository.findAll(pageable).map(MedicoResponseRecord::new);
     }
 
 }

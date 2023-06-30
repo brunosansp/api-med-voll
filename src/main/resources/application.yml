@@ -4,3 +4,8 @@ spring:
     url: jdbc:mysql://localhost:3306/vollmed_api
     username: root
     password: admin123456
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
