@@ -7,6 +7,7 @@ import com.med.voll.api.medico.MedicoResponseRecord;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +33,7 @@ public class MedicoController {
     }
 
     @GetMapping
-    public Page<MedicoResponseRecord> listAll(Pageable pageable) {
+    public Page<MedicoResponseRecord> listAll(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable) {
         return medicoRepository.findAll(pageable).map(MedicoResponseRecord::new);
     }
 
