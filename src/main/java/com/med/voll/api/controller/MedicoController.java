@@ -3,6 +3,7 @@ package com.med.voll.api.controller;
 import com.med.voll.api.endereco.MedicoRepository;
 import com.med.voll.api.medico.Medico;
 import com.med.voll.api.medico.MedicoRecord;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<MedicoRecord> create(@RequestBody MedicoRecord medico) {
+    public ResponseEntity<MedicoRecord> create(@RequestBody @Valid MedicoRecord medico) {
         Medico newMedico = medicoRepository.save(new Medico(medico));
         return new ResponseEntity(newMedico, HttpStatus.CREATED);
     }
