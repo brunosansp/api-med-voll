@@ -19,13 +19,31 @@ public class Endereco {
     private String numero;
     private String complemento;
 
-    public Endereco(EnderecoRecord endereco) {
-        this.logradouro = endereco.logradouro();
-        this.bairro = endereco.bairro();
-        this.cep = endereco.cep();
-        this.cidade = endereco.cidade();
-        this.uf = endereco.uf();
-        this.numero = endereco.numero();
-        this.complemento = endereco.complemento();
+    public Endereco(EnderecoRecord record) {
+        this.logradouro = record.logradouro();
+        this.bairro = record.bairro();
+        this.cep = record.cep();
+        this.cidade = record.cidade();
+        this.uf = record.uf();
+        this.numero = record.numero();
+        this.complemento = record.complemento();
     }
+
+    public void updateAddress(EnderecoRecord record) {
+        if (record.logradouro() != null)
+            this.logradouro = record.logradouro();
+        if (record.bairro() != null)
+            this.bairro = record.bairro();
+        if (record.cep() != null)
+            this.cep = record.cep();
+        if (record.cidade() != null)
+            this.cidade = record.cidade();
+        if (record.uf() != null)
+            this.uf = record.uf();
+        if (record.numero() != null)
+            this.numero = record.numero();
+        if (record.complemento() != null)
+            this.complemento = record.complemento();
+    }
+
 }
